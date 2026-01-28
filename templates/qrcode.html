@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content%}
+
+<section class=' flex items-center justify-center'>
+    <h1 class="block"> {{rn}}</h1>
+    <img class="block" src="{{qr_url}}">
+    <a class="block" href="{{qr_url}}" download="{{file_name}}">download QrCode</a>
+</section>
+
+{% endblock content%}

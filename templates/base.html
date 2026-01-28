@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'dist/style.css' %}"
+    />
+    <title>{% block title %}{% endblock title %}</title>
+    <script defer src="{% static "src/assets/fontawesome/js/fontawesome.min.js" %}"></script>
+    <script defer src="{% static "src/assets/fontawesome/js/solid.min.js" %}"></script>
+    <script>
+      window.onload=()=>{
+        const mobileMenuIcon= document.getElementById('mobile-menu-button')
+        mobileMenuIcon.addEventListener('click',()=>{
+          if(mobileMenuIcon.classList.contains('open')){
+            mobileMenuIcon.classList.remove('open');
+
+          }else{
+            mobileMenuIcon.classList.add('open')
+          }
+        });
+        const ticketsMenuIcon= document.getElementById('tickets-menu-item')
+        
+        ticketsMenuIcon.addEventListener('click',()=>{
+          if(ticketsMenuIcon.classList.contains('open')){
+            ticketsMenuIcon.classList.remove('open');
+
+          }else{
+            ticketsMenuIcon.classList.add('open')
+          }
+        })
+      }
+    </script>
+  </head>
+  <body>
+
+    <main>
+      <header class=" text-zinc-100" >
+        <nav class=" sticky top-0 flex bg-linear-to-r from-rose-500 to-pink-500">
+          <div class=" flex items-center p-2 gap-2">
+            <img src="{%  static "src/assets/images/logo-inverted.png" %} "  width="50" />
+            <div class="font-bold text-2xl capitalize">
+            pots<span class="text-sky-900">&Plants</span>
+          </div>
+          </div>
+          <div class="block md:hidden ml-auto pr-4 my-auto cursor-pointer ">
+            <button id="mobile-menu-button" class="group peer">
+              <div class="top-0 h-1 w-8 rounded-full bg-zinc-200 mt-b transition-all group-open:rotate-45 group-open:top-2 relative"></div>
+              <div class="h-1 w-8 rounded-full bg-zinc-200 mt-1 transition-all opacity-100 group-open:opacity-0"></div>
+              <div class="top-0 h-1 w-8 rounded-full bg-zinc-200 mt-1 transition-all group-open:-rotate-45 group-open:-top-2 relative "></div>
+            </button>
+            <div class="absolute top-[62px] left-0 w-full bg-linear-to-r from-rose-500 to-pink-200 peer-open:block hidden">
+              <div class="relative flex h-full items-center capitalize justify-center p-4 font-bold text-pink-200 hover:text-zinc-200 transition-colors hover:bg-white/10"><span>home</span></div>
+              <div class="relative flex h-full items-center capitalize justify-center p-4 font-bold text-pink-200 hover:text-zinc-200 transition-colors hover:bg-white/10"><span>lineups</span></div>
+              <div id="tickets-menu-item" class=" group relative  h-full  capitalize  font-bold text-pink-200 hover:text-zinc-200 transition-colors hover:bg-white/10">
+                <div class="p4 text-center font-bold ">tickets</div>
+                <div class="hidden group-open:block">
+                  <div class="relative flex h-full items-center capitalize justify-center p-4 font-bold text-pink-200 hover:text-zinc-200 transition-colors hover:bg-white/10"><span>Single day ticket</span></div>
+                  <div class="relative flex h-full items-center capitalize justify-center p-4 font-bold text-pink-200 hover:text-zinc-200 transition-colors hover:bg-white/10"> <span> 7 day ticket</span></div>
+                </div>
+                
+              </div>
+              <div class="relative flex h-full items-center capitalize justify-center p-4 font-bold text-pink-200 hover:text-zinc-200 transition-colors hover:bg-white/10"><span>support</span></div>
+            </div>
+          </div>
+          
+          <div class="md:flex hidden flex-1   items-center justify-end capitalize">
+            <div class="menu-item"><span>home</span></div>
+            {%  if user.is_authenticated  %}
+            <form class="menu-item" method="POST" action="{% url 'users:logout'%}">
+              {% csrf_token %}
+              <button type="submit">logout</button></form>
+            {%else %}
+            <a href="{% url "users:login" %}" class="menu-item"><span>Login</span></a>
+            <a href="{% url "users:register" %}" class="menu-item"><span>Create Account</span></a>
+            {%endif %}
+
+            <div class="menu-item group"><span>tickets</span>
+              <div class="hidden group-hover:block absolute top-full bg-pink-500 whitespace-nowrap rounded-b-rd text-right">
+                  <div class="p-4 font-bold hover:bg-white/5 hover: text-zinc-200 transition-colors ease-in-out cursor-pointer"><span>single ticket</span></div>
+                  <div class="p-4 font-bold hover:bg-white/5 hover: text-zinc-200 transition-colors ease-in-out cursor-pointer"><span>daily ticket</span></div>
+                  <div class="p-4 font-bold hover:bg-white/5 hover: text-zinc-200 transition-colors ease-in-out cursor-pointer"><span>monthly ticket ticket</span></div>
+              </div>
+            </div>
+            <div class="menu-item"><span>support</span></div>
+          </div>
+          
+ 
+          
+    </nav>
+
+    {% comment %} {% static "src/assets/images/hero.jpg" as background_image %}
+    <div class=" bg-cover bg-fixed bg-center bg-[url('/statics/src/assets/images/hero.jpg')] flex flex-col items-center justify-center min-h-[480px] h-[calc[100vh-200px]]">
+
+      <div class="bg-white/38 py-2 px-4 rounded-xl  backdrop-blur-md">
+        <div class="relative">
+          <img src="{%  static "src/assets/images/logo.png" %}"  width="175"/>
+          <div class="items-center flex justify-center mt-[-70px] mb-5">
+            <div class="flex h-14 w-14 items-center justify-center rounded-full bg-pink-500">
+              <div class="h-2 w-1 bg-pink-300 animate-wavey"></div>
+              <div class="w-1 h-3 bg-pink-200 animate-wavey"></div>
+              <div class="w-1 h-4 bg-pink-100 animate-wavey"></div>
+              <div class="w-1 h-3 bg-pink-200 animate-wavey"></div>
+              <div class="h-2 w-1 bg-pink-300 animate-wavey"></div>
+          
+            </div>
+          </div>
+        </div>
+        <div class="text-3xl font-bold">
+            Pots<span class="text-sky-900">&Plants</span>
+        </div>
+
+      </div>
+
+      <div class="mt-3 text-sm font-bold">
+          keep me posted
+      </div>
+      <form class="mt-3 flex gap-2">
+        <input type="email" placeholder="email" class="rounded-sm border  bg-white/30  backdrop-blur-md font-bold text-sky-900 placeholder-zinc-400 caret-pink-500 outline-pink-500 "/>
+        <button type="submit" class="cursor-pointer rounded-sm bg-pink-500 py-2 px-4 font-bold transition-colors hover:bg-sky-900 hover: shadow-lg hover:shadow-black/20">Subscribe</button>
+      </form>
+      
+    </div> {% endcomment %}
+      </header>
+    </main>
+    
+    <section class='mt-20 max-w-screen-lg mx-auto'>{% block content %}{% endblock content %}</section>
+  </body>
+</html>

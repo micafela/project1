@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section class="flex justify-center items-center">
+    <div class="bg-gray-500/15 border-amber-100 border-2">
+        <form class="b" method="post" action="{% url 'products'%}">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="" type="submit">Generate code</button>
+        </form>
+    </div>
+
+</section>
+
+{% endblock content %}

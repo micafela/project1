@@ -1,0 +1,30 @@
+body {
+    background: rgb(218, 215, 215);
+}
+
+nav.navigation {
+    background: white;
+    text-align: center;
+}
+
+nav.navigation ul {
+    list-style: none;
+}
+
+nav.navigation ul li {
+    display: inline-block;
+    padding: 10px;
+
+}
+
+nav.navigation ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+
+}
+
+nav.navigation ul li:hover {
+    background: black;
+    color: white;
+
+}

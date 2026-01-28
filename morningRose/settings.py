@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'pots.apps.PotsConfig',
     'widget_tweaks',
     'django_resized',
-    'qr_code',
+    #'qr_code',
     # 'tailwind',
     # 'theme',
 
@@ -140,3 +140,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 LOGIN_REDIRECT_URL = '/'
 AUTH_USER_MODEL = 'users.CustomUser'
+
